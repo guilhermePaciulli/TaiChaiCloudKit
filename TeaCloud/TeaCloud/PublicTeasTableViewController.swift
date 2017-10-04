@@ -46,5 +46,4 @@ class PublicTeasTableViewController: UITableViewController {
         cell.detailTextLabel?.text = tea.contents
         return cell
     }
-
 }

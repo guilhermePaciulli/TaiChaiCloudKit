@@ -55,6 +55,8 @@ class TeaViewController: UIViewController {
                 
             } else {
                 //just insert the code to add a new tea here, use teaName, teaContent and shareTea
+                let t = Tea(name: teaName, contents: teaContent)
+                CKManager.shared.save(t: t, privado: shareTea)
             }
         } else {
             self.popUpView.shake()

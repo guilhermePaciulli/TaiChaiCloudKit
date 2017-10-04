@@ -36,7 +36,7 @@ class CKManager {
                 print("Problema ao tentar salvar o registro")
                 return
             }
-            
+                
             print("Registro salvo com sucesso")
         }
         
