@@ -12,11 +12,6 @@ class PersonalTeasTableViewController: UITableViewController {
     
     var personalTeas: [Tea] = []
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.loadData()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.loadData()
@@ -38,6 +33,14 @@ class PersonalTeasTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.tableView.isEditing {
+            let selectedTea = self.personalTeas[indexPath.row]
+            self.showTeaViewController(toEdit: selectedTea)
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      let cell = tableView.dequeueReusableCell(withIdentifier: "personalTeaCell", for: indexPath)
         if let teaCell = cell as? PersonalTeaTableViewCell {
@@ -53,7 +56,26 @@ class PersonalTeasTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            let teaDeleted = self.personalTeas[indexPath.row]
+            self.personalTeas.remove(at: indexPath.row)
+            //Just remove the tea here, the tea is inside the variable teaDeleted
             tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    @IBAction func newTea(_ sender: UIBarButtonItem) {
+        self.showTeaViewController(toEdit: nil)
+    }
+    
+    private func showTeaViewController(toEdit tea: Tea?) {
+        if let storyboard = self.storyboard {
+            if let teaViewController = storyboard.instantiateViewController(withIdentifier: "teaViewController") as? TeaViewController {
+                if let tea = tea {
+                    teaViewController.tea = tea
+                }
+                teaViewController.personalTeasTableViewController = self
+                self.present(teaViewController, animated: true, completion: nil)
+            }
         }
     }
     

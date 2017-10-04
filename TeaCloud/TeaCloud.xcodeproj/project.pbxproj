@@ -19,6 +19,8 @@
 		BD3AF4501F856D9A00096689 /* PersonalTeasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3AF44F1F856D9A00096689 /* PersonalTeasTableViewController.swift */; };
 		BD3AF4521F856E2200096689 /* PersonalTeaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3AF4511F856E2200096689 /* PersonalTeaTableViewCell.swift */; };
 		BD3AF4581F85765400096689 /* TeaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3AF4571F85765400096689 /* TeaViewController.swift */; };
+		BD3AF45A1F85794B00096689 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3AF4591F85794B00096689 /* Extensions.swift */; };
+		BD3AF45C1F8579D700096689 /* PublicTeasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3AF45B1F8579D700096689 /* PublicTeasTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		BD3AF44F1F856D9A00096689 /* PersonalTeasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTeasTableViewController.swift; sourceTree = "<group>"; };
 		BD3AF4511F856E2200096689 /* PersonalTeaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTeaTableViewCell.swift; sourceTree = "<group>"; };
 		BD3AF4571F85765400096689 /* TeaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaViewController.swift; sourceTree = "<group>"; };
+		BD3AF4591F85794B00096689 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		BD3AF45B1F8579D700096689 /* PublicTeasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTeasTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,9 +89,11 @@
 				529B75F81F8462A800430FD7 /* AppDelegate.swift */,
 				529B75FA1F8462A800430FD7 /* ViewController.swift */,
 				529B75FC1F8462A800430FD7 /* Main.storyboard */,
-				BD3AF4511F856E2200096689 /* PersonalTeaTableViewCell.swift */,
+				BD3AF45B1F8579D700096689 /* PublicTeasTableViewController.swift */,
 				BD3AF44F1F856D9A00096689 /* PersonalTeasTableViewController.swift */,
+				BD3AF4511F856E2200096689 /* PersonalTeaTableViewCell.swift */,
 				BD3AF4571F85765400096689 /* TeaViewController.swift */,
+				BD3AF4591F85794B00096689 /* Extensions.swift */,
 				529B75FF1F8462A800430FD7 /* Assets.xcassets */,
 				529B76011F8462A800430FD7 /* LaunchScreen.storyboard */,
 				529B76041F8462A800430FD7 /* Info.plist */,
@@ -193,11 +199,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD3AF4581F85765400096689 /* TeaViewController.swift in Sources */,
+				BD3AF45A1F85794B00096689 /* Extensions.swift in Sources */,
 				529B76111F84682800430FD7 /* CKRecordExtension.swift in Sources */,
 				529B75FB1F8462A800430FD7 /* ViewController.swift in Sources */,
 				BD3AF4521F856E2200096689 /* PersonalTeaTableViewCell.swift in Sources */,
 				529B760C1F8466F600430FD7 /* CKManager.swift in Sources */,
 				529B760F1F84674100430FD7 /* Tea.swift in Sources */,
+				BD3AF45C1F8579D700096689 /* PublicTeasTableViewController.swift in Sources */,
 				BD3AF4501F856D9A00096689 /* PersonalTeasTableViewController.swift in Sources */,
 				529B75F91F8462A800430FD7 /* AppDelegate.swift in Sources */,
 			);
