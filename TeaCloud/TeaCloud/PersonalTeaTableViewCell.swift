@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class PersonalTeaTableViewCell: UITableViewCell {
     
@@ -14,18 +15,40 @@ class PersonalTeaTableViewCell: UITableViewCell {
     
     @IBOutlet weak var teaContentLabel: UILabel!
     
-    var tea: Tea? {
-        get {
-            return self.tea
-        }
-        set(newValue) {
-            if let value = newValue {
-                self.teaNameLabel.text = value.name
-                self.teaContentLabel.text = value.contents
-            }
-        }
+    var tea: Tea?
+//    var tea: Tea? {
+//        get {
+//            return tea
+//        }
+//        set(newValue) {
+//            if let value = newValue {
+//                self.teaNameLabel.text = value.name
+//                self.teaContentLabel.text = value.contents
+//            }
+//        }
+//    }
+    
+    override func awakeFromNib() {
+        teaNameLabel.text = tea?.name
+        teaContentLabel.text = tea?.contents
     }
     
     @IBAction func didChangePrivacy(_ sender: UISwitch) {
+        if(sender.isOn){
+            //fica ativo de verdade
+            print("oi1")
+            print(tea?.id)
+            let record = CKRecord.init(recordType: "Tea", recordID: CKRecordID(recordName: (tea?.id)!))
+            record[.name] = tea?.name
+            record[.contents] = tea?.contents
+            CKManager.shared.savePublic(record: record)
+           
+        }else{
+            //nao fica ativo
+            print("oi2")
+            if let id = tea?.id {
+                 CKManager.shared.deleteTea(id: id, privado: false)
+            }
+        }
     }
 }

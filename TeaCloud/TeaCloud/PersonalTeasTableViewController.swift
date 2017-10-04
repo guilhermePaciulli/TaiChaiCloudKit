@@ -23,7 +23,7 @@ class PersonalTeasTableViewController: UITableViewController {
     }
     
     func loadData() {
-        CKManager.shared.fetchTea(callback: ({ (teas, error) in
+        CKManager.shared.fetchTea(privado: true, callback: ({ (teas, error) in
             if let successfull = teas {
                 self.personalTeas = successfull
             }
@@ -43,6 +43,7 @@ class PersonalTeasTableViewController: UITableViewController {
         if let teaCell = cell as? PersonalTeaTableViewCell {
             teaCell.tea = self.personalTeas[indexPath.row]
         }
+        cell.awakeFromNib()
         return cell
     }
     

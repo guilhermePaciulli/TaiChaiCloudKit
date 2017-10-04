@@ -16,6 +16,19 @@ enum TeaKey: String {
 struct Tea {
     let name: String
     let contents: String
+    let id: String
+    
+    init(name: String, contents: String){
+        self.name = name
+        self.contents = contents
+        self.id = ""
+    }
+    
+    init(name: String, contents: String, id: String){
+        self.name = name
+        self.contents = contents
+        self.id = id
+    }
     
     func string() -> String {
         return "\(name) - \(contents)"

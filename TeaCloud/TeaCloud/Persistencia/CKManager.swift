@@ -31,13 +31,29 @@ class CKManager {
         record[.name] = t.name
         record[.contents] = t.contents
         
-        var db = publicDB
-        
-        if privado {
-            db = privateDB
+        privateDB.save(record) { (record, error) in
+            guard error == nil else {
+                print("Problema ao tentar salvar o registro")
+                return
+            }
+            
+            print("Registro salvo com sucesso")
         }
         
-        db.save(record) { (record, error) in
+        if !privado {
+            publicDB.save(record) { (record, error) in
+                guard error == nil else {
+                    print("Problema ao tentar salvar o registro")
+                    return
+                }
+                
+                print("Registro salvo com sucesso")
+            }
+        }
+    }
+    
+    func savePublic (record: CKRecord){
+        publicDB.save(record) { (record, error) in
             guard error == nil else {
                 print("Problema ao tentar salvar o registro")
                 return
@@ -76,8 +92,7 @@ class CKManager {
             let teas = teaRecords.map({ (record) -> Tea in
                 let name = record.value(forKey: "name") as? String ?? ""
                 let contents = record.value(forKey: "contents") as? String ?? ""
-                
-                return Tea(name: name, contents: contents)
+                return Tea(name: name, contents: contents,id: record.recordID.recordName)
             })
             
             callback(teas, nil)
@@ -118,18 +133,17 @@ class CKManager {
         }
     }
     
-    func deleteTea(id:String) {
+    func deleteTea(id:String , privado : Bool) {
+        var db = publicDB
+        if privado {
+            db = privateDB
+        }
         
         let selectedRecordID = CKRecordID(recordName: id)
-    
-        publicDB.delete(withRecordID: selectedRecordID) { (recordID, error) in
+        db.delete(withRecordID: selectedRecordID) { (recordID, error) in
             if error != nil {
                 print(error)
             }else {
-//                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-//                    //self.arrNotes.removeAtIndex(indexPath.row)
-//                    //self.tblNotes.reloadData()
-//                })
                 print("DELETOU")
             }
         }
