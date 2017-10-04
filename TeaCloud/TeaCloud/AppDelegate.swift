@@ -18,31 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        CKManager.shared.fetchTea { (teasFetched, error) in
-            guard error == nil else {
-                print("Ocorreu um erro na primeira busca")
-                print(error!)
-                return
-            }
-            teasFetched?.forEach({ (tea) in
-                print(tea.string())
-            })
-//            teas.forEach({ (student) in
-//                CloudKitManager.shared.save(mackStudent: student)
-//            })
-            CKManager.shared.fetchTea { (teasFetched2, error) in
-                guard error == nil else {
-                    print("Ocorreu um erro na segunda busca")
-                    return
-                }
-                teasFetched2?.forEach({ (tea) in
-                    print(tea.string())
-                })
-                print("Observando modificações")
-                //                CloudKitManager.shared.startObservingChanges()
-            }
-        }
-        
         return true
     }
 

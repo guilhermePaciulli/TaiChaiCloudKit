@@ -26,12 +26,18 @@ class CKManager {
         privateDB = container.privateCloudDatabase
     }
     
-    func save(t: Tea) {
+    func save(t: Tea, privado: Bool) {
         let record = CKRecord(recordType: TeaType)
         record[.name] = t.name
         record[.contents] = t.contents
         
-        publicDB.save(record) { (record, error) in
+        var db = publicDB
+        
+        if privado {
+            db = privateDB
+        }
+        
+        db.save(record) { (record, error) in
             guard error == nil else {
                 print("Problema ao tentar salvar o registro")
                 return
@@ -41,19 +47,27 @@ class CKManager {
         }
     }
     
-    func fetchTea(callback: @escaping ([Tea]?, Error?)->Void) {
+    func fetchTea(privado: Bool, callback: @escaping ([Tea]?, Error?)->Void) {
         
-        let predicate = NSPredicate(value: true)
+        let predicate =  NSPredicate(value: true)
         
         let query = CKQuery(recordType: TeaType, predicate: predicate)
         
-        publicDB.perform(query, inZoneWith: nil) { (records, error) in
+        var db = publicDB
+        
+        if privado {
+            db = privateDB
+        }
+        
+        db.perform(query, inZoneWith: nil) { (records, error) in
             guard error == nil else {
+                print("ERROR A")
                 callback(nil, error)
                 return
             }
             
             guard let teaRecords = records else {
+                print("ERROR B")
                 let e = NSError(domain: "", code: 500, userInfo: nil)
                 callback(nil, e)
                 return
@@ -102,6 +116,24 @@ class CKManager {
                 UserDefaults.standard.set(savedSubscription.subscriptionID, forKey: "subscriptionID")
             })
         }
+    }
+    
+    func deleteTea(id:String) {
+        
+        let selectedRecordID = CKRecordID(recordName: id)
+    
+        publicDB.delete(withRecordID: selectedRecordID) { (recordID, error) in
+            if error != nil {
+                print(error)
+            }else {
+//                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//                    //self.arrNotes.removeAtIndex(indexPath.row)
+//                    //self.tblNotes.reloadData()
+//                })
+                print("DELETOU")
+            }
+        }
+        
     }
     
     func getNotificationSettings() {

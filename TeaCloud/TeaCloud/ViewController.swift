@@ -8,8 +8,9 @@
 
 import UIKit
 import CloudKit
+import UserNotifications
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, UNUserNotificationCenterDelegate {
 
     @IBOutlet weak var teaName: UITextField!
     @IBOutlet weak var teaContents: UITextField!
@@ -19,6 +20,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         teaName.delegate = self
         teaContents.delegate = self
+        
+        let p = true
+        CKManager.shared.fetchTea(privado: p) { (teasFetched, error) in
+            guard error == nil else {
+                print("Ocorreu um erro na primeira busca")
+                print(error!)
+                return
+            }
+            teasFetched?.forEach({ (tea) in
+                print(tea.string())
+            })
+            //            teas.forEach({ (student) in
+            //                CloudKitManager.shared.save(mackStudent: student)
+            //            })
+        }
+        
+        //CKManager.shared.deleteTea(id: "3C5F0733-8CC3-4572-864E-A92E24ADF4E8")
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,7 +51,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let acaoConfirmar = UIAlertAction(title: "Confirmar", style: .default) { (UIAlertAction) in
             if (self.teaName.text != "") && (self.teaContents.text != "") {
                 let t = Tea(name: self.teaName.text!, contents: self.teaContents.text!)
-                manager.save(t: t)
+                manager.save(t: t, privado: true)
             }
         }
         let acaoCancelar = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
