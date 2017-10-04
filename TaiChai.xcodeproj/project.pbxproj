@@ -15,6 +15,9 @@
 		BD8A10931F845284000D76B5 /* TaiChaiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8A10921F845284000D76B5 /* TaiChaiTests.swift */; };
 		BD8A109E1F845284000D76B5 /* TaiChaiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8A109D1F845284000D76B5 /* TaiChaiUITests.swift */; };
 		BD8A10AE1F8457D0000D76B5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD8A10AD1F8457D0000D76B5 /* CloudKit.framework */; };
+		BD8A10B01F84586A000D76B5 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8A10AF1F84586A000D76B5 /* CloudKitManager.swift */; };
+		BD8A10B31F84597C000D76B5 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8A10B21F84597C000D76B5 /* Entities.swift */; };
+		BD8A10B51F845AA9000D76B5 /* CKRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8A10B41F845AA9000D76B5 /* CKRecordExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		BD8A109F1F845284000D76B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD8A10AB1F8457A9000D76B5 /* TaiChai.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TaiChai.entitlements; sourceTree = "<group>"; };
 		BD8A10AD1F8457D0000D76B5 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		BD8A10AF1F84586A000D76B5 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		BD8A10B21F84597C000D76B5 /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
+		BD8A10B41F845AA9000D76B5 /* CKRecordExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKRecordExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,7 @@
 				BD8A10841F845284000D76B5 /* Assets.xcassets */,
 				BD8A10861F845284000D76B5 /* LaunchScreen.storyboard */,
 				BD8A10891F845284000D76B5 /* Info.plist */,
+				BD8A10B11F8458E8000D76B5 /* CloudKit */,
 			);
 			path = TaiChai;
 			sourceTree = "<group>";
@@ -137,6 +144,16 @@
 				BD8A10AD1F8457D0000D76B5 /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD8A10B11F8458E8000D76B5 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				BD8A10AF1F84586A000D76B5 /* CloudKitManager.swift */,
+				BD8A10B21F84597C000D76B5 /* Entities.swift */,
+				BD8A10B41F845AA9000D76B5 /* CKRecordExtension.swift */,
+			);
+			path = CloudKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,8 +298,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD8A10B51F845AA9000D76B5 /* CKRecordExtension.swift in Sources */,
 				BD8A10801F845284000D76B5 /* ViewController.swift in Sources */,
 				BD8A107E1F845284000D76B5 /* AppDelegate.swift in Sources */,
+				BD8A10B31F84597C000D76B5 /* Entities.swift in Sources */,
+				BD8A10B01F84586A000D76B5 /* CloudKitManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
