@@ -31,22 +31,21 @@ class CKManager {
         record[.name] = t.name
         record[.contents] = t.contents
         
-        privateDB.save(record) { (record, error) in
+        privateDB.save(record) { (r, error) in
             guard error == nil else {
                 print("Problema ao tentar salvar o registro")
                 return
             }
-                
             print("Registro salvo com sucesso")
         }
         
         if !privado {
-            publicDB.save(record) { (record, error) in
+            self.publicDB.save(record) { (record, error) in
                 guard error == nil else {
                     print("Problema ao tentar salvar o registro")
                     return
                 }
-                
+                print("silvao salvo")
                 print("Registro salvo com sucesso")
             }
         }

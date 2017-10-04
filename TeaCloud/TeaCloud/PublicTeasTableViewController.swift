@@ -28,6 +28,7 @@ class PublicTeasTableViewController: UITableViewController {
                 self.publicTeas = successfull
             }
         }))
+        
         self.tableView.reloadData()
     }
 
