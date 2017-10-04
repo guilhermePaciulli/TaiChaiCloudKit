@@ -41,7 +41,7 @@ class CKManager {
         }
     }
     
-    func fetchMackStudent(callback: @escaping ([Tea]?, Error?)->Void) {
+    func fetchTea(callback: @escaping ([Tea]?, Error?)->Void) {
         
         let predicate = NSPredicate(value: true)
         
