@@ -53,13 +53,13 @@ class CKManager {
                 return
             }
             
-            guard let studentRecords = records else {
+            guard let teaRecords = records else {
                 let e = NSError(domain: "", code: 500, userInfo: nil)
                 callback(nil, e)
                 return
             }
             
-            let teas = studentRecords.map({ (record) -> Tea in
+            let teas = teaRecords.map({ (record) -> Tea in
                 let name = record.value(forKey: "name") as? String ?? ""
                 let contents = record.value(forKey: "contents") as? String ?? ""
                 
