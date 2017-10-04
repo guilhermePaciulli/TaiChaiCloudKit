@@ -31,7 +31,7 @@
         <!--Favorites-->
         <scene sceneID="7VG-Ss-iHt">
             <objects>
-                <tableViewController storyboardIdentifier="personalTeaCell" id="GWy-tj-Ffq" customClass="PersonalTeasTableViewController" customModule="TeaCloud" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="GWy-tj-Ffq" customClass="PersonalTeasTableViewController" customModule="TeaCloud" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Fji-OW-ZPI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,7 +56,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M94-gC-1s2">
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="M94-gC-1s2">
                                             <rect key="frame" x="311.5" y="6" width="54.5" height="31"/>
                                             <connections>
                                                 <action selector="didChangePrivacy:" destination="sMi-uh-8e8" eventType="valueChanged" id="oGJ-sD-41h"/>
@@ -90,7 +90,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Favorites" id="qCm-Nx-4xA">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qUt-dk-usz"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qUt-dk-usz">
+                            <connections>
+                                <action selector="newTea:" destination="GWy-tj-Ffq" id="Zcd-Cs-x51"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dlr-3c-vPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -100,7 +104,7 @@
         <!--Tea View Controller-->
         <scene sceneID="zLO-tH-xSd">
             <objects>
-                <viewController id="miG-Fg-bVD" customClass="TeaViewController" customModule="TeaCloud" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="teaViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="miG-Fg-bVD" customClass="TeaViewController" customModule="TeaCloud" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bf4-ne-snQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,7 +142,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9CI-E7-LSz">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9CI-E7-LSz">
                                         <rect key="frame" x="177" y="257" width="55.5" height="35"/>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MC8-sY-oCp">
@@ -150,10 +154,16 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KT-vq-SDw">
                                         <rect key="frame" x="122" y="300" width="122" height="33.5"/>
                                         <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="didSavedTea:" destination="miG-Fg-bVD" eventType="touchUpInside" id="iXc-Vj-zUK"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BIS-dz-odv">
                                         <rect key="frame" x="0.0" y="296.5" width="122" height="40.5"/>
                                         <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="didCancel:" destination="miG-Fg-bVD" eventType="touchUpInside" id="Z38-Eb-jiX"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -208,6 +218,7 @@
                     </view>
                     <connections>
                         <outlet property="popUpView" destination="Msm-Ch-oSu" id="nGE-O0-c3E"/>
+                        <outlet property="shareTea" destination="9CI-E7-LSz" id="yz7-R4-331"/>
                         <outlet property="teaContentTextField" destination="naB-M4-dOZ" id="BqZ-O9-vzh"/>
                         <outlet property="teaNameTextField" destination="AEd-M0-67w" id="yZ7-4a-GIo"/>
                         <outlet property="titleLabel" destination="Ywd-Jo-vlO" id="z2K-W1-eVc"/>
@@ -215,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x9p-6a-49a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="328.80000000000001" y="-513.19340329835086"/>
+            <point key="canvasLocation" x="353" y="-512"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0MS-pg-SFm">
@@ -237,13 +248,13 @@
         <!--Search Teas-->
         <scene sceneID="b1H-VM-eh6">
             <objects>
-                <tableViewController id="ms6-kK-bkY" sceneMemberID="viewController">
+                <tableViewController id="ms6-kK-bkY" customClass="PublicTeasTableViewController" customModule="TeaCloud" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oyZ-z6-1dt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="6u7-je-6uP" detailTextLabel="8wI-Tp-4gK" style="IBUITableViewCellStyleSubtitle" id="CsL-VF-ftg">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="publicTeasCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="publicTeasCell" textLabel="6u7-je-6uP" detailTextLabel="8wI-Tp-4gK" style="IBUITableViewCellStyleSubtitle" id="CsL-VF-ftg">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CsL-VF-ftg" id="OoY-mq-Mg4">
