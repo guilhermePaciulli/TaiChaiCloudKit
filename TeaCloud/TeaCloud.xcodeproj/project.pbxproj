@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5235BB331F846B670082DF28 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5235BB321F846B670082DF28 /* CloudKit.framework */; };
 		529B75F91F8462A800430FD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529B75F81F8462A800430FD7 /* AppDelegate.swift */; };
 		529B75FB1F8462A800430FD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529B75FA1F8462A800430FD7 /* ViewController.swift */; };
 		529B75FE1F8462A800430FD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 529B75FC1F8462A800430FD7 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		5235BB301F846AF90082DF28 /* TeaCloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeaCloud.entitlements; sourceTree = "<group>"; };
+		5235BB321F846B670082DF28 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		529B75F51F8462A800430FD7 /* TeaCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		529B75F81F8462A800430FD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		529B75FA1F8462A800430FD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,17 +38,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5235BB331F846B670082DF28 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5235BB311F846B670082DF28 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5235BB321F846B670082DF28 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		529B75EC1F8462A800430FD7 = {
 			isa = PBXGroup;
 			children = (
 				529B75F71F8462A800430FD7 /* TeaCloud */,
 				529B75F61F8462A800430FD7 /* Products */,
+				5235BB311F846B670082DF28 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +137,9 @@
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
