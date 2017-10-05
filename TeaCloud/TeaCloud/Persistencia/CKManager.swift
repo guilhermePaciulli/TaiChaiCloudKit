@@ -51,6 +51,32 @@ class CKManager {
         }
     }
     
+    func saveWithId(t: Tea, privado: Bool) {
+        //let record = CKRecord(recordType: TeaType)
+        let record = CKRecord.init(recordType: TeaType, recordID: CKRecordID.init(recordName: t.id))
+        record[.name] = t.name
+        record[.contents] = t.contents
+        
+        privateDB.save(record) { (r, error) in
+            guard error == nil else {
+                print("Problema ao tentar salvar o registro")
+                return
+            }
+            print("Registro salvo com sucesso")
+        }
+        
+        if !privado {
+            self.publicDB.save(record) { (record, error) in
+                guard error == nil else {
+                    print("Problema ao tentar salvar o registro")
+                    return
+                }
+                print("silvao salvo")
+                print("Registro salvo com sucesso")
+            }
+        }
+    }
+    
     func savePublic (record: CKRecord){
         publicDB.save(record) { (record, error) in
             guard error == nil else {
@@ -147,6 +173,42 @@ class CKManager {
             }
         }
         
+    }
+    
+    func updateTea(t: Tea, privado:Bool) {
+        let predicate =  NSPredicate(value: true)
+        let query = CKQuery(recordType: TeaType, predicate: predicate)
+        
+        var db = publicDB
+        
+        if privado {
+            db = privateDB
+        }
+        
+        db.perform(query, inZoneWith: nil) { (records, error) in
+            guard error == nil else {
+                print("ERROR A")
+                return
+            }
+            
+            guard let teaRecords = records else {
+                print("ERROR B")
+                return
+            }
+            
+            let teas = teaRecords.map({ (record) in
+                var identificador:String = ""
+                if String(describing: record.recordID) == t.id {
+                    // Guarda o identificador
+                    identificador = String(describing: record.recordID)
+                    // Deleta o antigo
+                    self.deleteTea(id: identificador, privado: privado)
+                    // Adiciona o novo com o identificador
+                    self.saveWithId(t: t, privado: privado)
+                }
+            })
+            
+        }
     }
     
     func existsOnPublic(t: Tea) -> Bool {
