@@ -33,7 +33,12 @@ class UpdateDetailsVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
+    @IBAction func edit(_ sender: Any) {
+        CKManager.shared.updateTea(t: tea, privado: true)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 
