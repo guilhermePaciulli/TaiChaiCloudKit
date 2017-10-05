@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5235BB331F846B670082DF28 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5235BB321F846B670082DF28 /* CloudKit.framework */; };
+		52552E921F85B94C00D25D28 /* UpdateDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52552E911F85B94C00D25D28 /* UpdateDetailsVC.swift */; };
 		529B75F91F8462A800430FD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529B75F81F8462A800430FD7 /* AppDelegate.swift */; };
 		529B75FB1F8462A800430FD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529B75FA1F8462A800430FD7 /* ViewController.swift */; };
 		529B75FE1F8462A800430FD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 529B75FC1F8462A800430FD7 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		5235BB301F846AF90082DF28 /* TeaCloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeaCloud.entitlements; sourceTree = "<group>"; };
 		5235BB321F846B670082DF28 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		52552E911F85B94C00D25D28 /* UpdateDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDetailsVC.swift; sourceTree = "<group>"; };
 		529B75F51F8462A800430FD7 /* TeaCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		529B75F81F8462A800430FD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		529B75FA1F8462A800430FD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				529B75F81F8462A800430FD7 /* AppDelegate.swift */,
 				529B75FA1F8462A800430FD7 /* ViewController.swift */,
 				529B75FC1F8462A800430FD7 /* Main.storyboard */,
+				52552E911F85B94C00D25D28 /* UpdateDetailsVC.swift */,
 				BD3AF45B1F8579D700096689 /* PublicTeasTableViewController.swift */,
 				BD3AF44F1F856D9A00096689 /* PersonalTeasTableViewController.swift */,
 				BD3AF4511F856E2200096689 /* PersonalTeaTableViewCell.swift */,
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52552E921F85B94C00D25D28 /* UpdateDetailsVC.swift in Sources */,
 				BD3AF4581F85765400096689 /* TeaViewController.swift in Sources */,
 				BD3AF45A1F85794B00096689 /* Extensions.swift in Sources */,
 				529B76111F84682800430FD7 /* CKRecordExtension.swift in Sources */,

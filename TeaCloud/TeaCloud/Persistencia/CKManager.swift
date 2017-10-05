@@ -149,6 +149,30 @@ class CKManager {
         
     }
     
+    func existsOnPublic(t: Tea) -> Bool {
+        var sit:Bool = false
+        let predicate =  NSPredicate(value: true)
+        let query = CKQuery(recordType: TeaType, predicate: predicate)
+        publicDB.perform(query, inZoneWith: nil) { (records, error) in
+            guard error == nil else {
+                print("ERROR A")
+                return
+            }
+            
+            guard let teaRecords = records else {
+                print("ERROR B")
+                return
+            }
+            
+            let teas = teaRecords.map({ (record) in
+                if String(describing: record.recordID) == t.id {
+                    sit = true
+                }
+            })
+        }
+        return sit
+    }
+    
     func getNotificationSettings() {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             print("Notification settings: \(settings)")

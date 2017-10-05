@@ -47,6 +47,7 @@ class PersonalTeasTableViewController: UITableViewController {
             teaCell.tea = self.personalTeas[indexPath.row]
         }
         cell.awakeFromNib()
+        cell.tag = indexPath.row
         return cell
     }
     
@@ -76,6 +77,17 @@ class PersonalTeasTableViewController: UITableViewController {
                 teaViewController.personalTeasTableViewController = self
                 self.present(teaViewController, animated: true, completion: nil)
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "update" {
+            
+            let viewControllerDestino = segue.destination as! UpdateDetailsVC
+            
+            let celula = sender as! UITableViewCell
+            print("Selecionada - \(celula.tag) - \(self.personalTeas[celula.tag].name)")
+            viewControllerDestino.tea = self.personalTeas[celula.tag]
         }
     }
     
