@@ -33,6 +33,9 @@ class UpdateDetailsVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func deleteCurrentTea(_ sender: Any) {
+        CKManager.shared.deleteTea(id: tea.id, privado: true)
+    }
     
     @IBAction func edit(_ sender: Any) {
         let newTea = Tea.init(name: self.teaName.text!, contents: self.teaContents.text!, id: self.tea.id)

@@ -176,11 +176,11 @@ class CKManager {
     }
     
     func updateTea(t: Tea, privado:Bool) {
+        print("\(t.name) - \(t.contents) - \(t.id)")
         let predicate =  NSPredicate(value: true)
         let query = CKQuery(recordType: TeaType, predicate: predicate)
         
         var db = publicDB
-        
         if privado {
             db = privateDB
         }

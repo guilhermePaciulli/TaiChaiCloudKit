@@ -150,6 +150,15 @@
                                     <action selector="edit:" destination="SLh-p5-kax" eventType="touchUpInside" id="sI1-nQ-O1R"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x58-4h-hiT">
+                                <rect key="frame" x="16" y="268" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteCurrentTea:" destination="SLh-p5-kax" eventType="touchUpInside" id="eZB-9A-agH"/>
+                                    <action selector="edit:" destination="SLh-p5-kax" eventType="touchUpInside" id="8GT-8q-OoX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="hQ5-9W-0T5"/>
