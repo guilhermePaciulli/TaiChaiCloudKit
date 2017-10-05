@@ -198,7 +198,7 @@ class CKManager {
             
             teaRecords.forEach({ (record) in
                 var identificador:String = ""
-                if String(describing: record.recordID) == t.id {
+                if record.recordID.recordName == t.id {
                     // Guarda o identificador
                     identificador = String(describing: record.recordID)
                     // Deleta o antigo
@@ -211,8 +211,7 @@ class CKManager {
         }
     }
     
-    func existsOnPublic(t: Tea) -> Bool {
-        var sit:Bool = false
+    func existsOnPublic(t: Tea, callback: @escaping (Bool) -> Void) {
         let predicate =  NSPredicate(value: true)
         let query = CKQuery(recordType: TeaType, predicate: predicate)
         publicDB.perform(query, inZoneWith: nil) { (records, error) in
@@ -227,12 +226,14 @@ class CKManager {
             }
             
             teaRecords.forEach({ (record) in
-                if String(describing: record.recordID) == t.id {
-                    sit = true
+                if record.recordID.recordName == t.id {
+                    callback(true)
+                    return
                 }
             })
+            
+            callback(false)
         }
-        return sit
     }
     
     func getNotificationSettings() {

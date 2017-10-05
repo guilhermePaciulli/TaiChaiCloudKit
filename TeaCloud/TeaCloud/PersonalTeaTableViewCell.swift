@@ -21,10 +21,20 @@ class PersonalTeaTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.sharedTeaSwitch.isEnabled = false
         if let tea = self.tea {
             teaNameLabel.text = tea.name
             teaContentLabel.text = tea.contents
-            self.sharedTeaSwitch.isOn = CKManager.shared.existsOnPublic(t: tea)
+            CKManager.shared.existsOnPublic(t: tea, callback: ({ (exists) in
+                DispatchQueue.main.async {
+                    if exists {
+                        if !self.sharedTeaSwitch.isOn {
+                            self.sharedTeaSwitch.setOn(true, animated: true)
+                        }
+                    }
+                    self.sharedTeaSwitch.isEnabled = true
+                }
+            }))
         }
     }
     

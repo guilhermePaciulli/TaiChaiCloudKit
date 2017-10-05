@@ -20,15 +20,27 @@ class UpdateDetailsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.teaShared.isEnabled = false
         teaName.text = tea.name
         teaContents.text = tea.contents
-        teaShared.isOn = CKManager.shared.existsOnPublic(t: tea)
+        CKManager.shared.existsOnPublic(t: tea, callback: ({ (exists) in
+            DispatchQueue.main.async {
+                if exists {
+                    if !self.teaShared.isOn {
+                        self.teaShared.setOn(true, animated: true)
+                    }
+                }
+                self.teaShared.isEnabled = true
+            }
+        }))
     }
     
     @IBAction func deleteCurrentTea(_ sender: Any) {
-        if CKManager.shared.existsOnPublic(t: tea) {
-            CKManager.shared.deleteTea(id: tea.id, privado: false)
-        }
+        CKManager.shared.existsOnPublic(t: tea, callback: ({ (exists) in
+            if exists {
+                CKManager.shared.deleteTea(id: self.tea.id, privado: false)
+            }
+        }))
         CKManager.shared.deleteTea(id: tea.id, privado: true)
     }
     
