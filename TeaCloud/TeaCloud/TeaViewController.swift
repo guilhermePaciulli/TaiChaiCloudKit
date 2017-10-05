@@ -50,11 +50,8 @@ class TeaViewController: UIViewController {
                 self.popUpView.shake()
                 return
             }
-            if let editTea = tea {
-                //just insert the code to edit the tea here, the tea our guy wants to edit is inside the variable editTea the new values are in teaName, teaContent and shareTea
-                
+            if let _ = tea {
             } else {
-                //just insert the code to add a new tea here, use teaName, teaContent and shareTea
                 let t = Tea(name: teaName, contents: teaContent)
                 CKManager.shared.save(t: t, privado: !shareTea)
             }

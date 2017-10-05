@@ -80,7 +80,7 @@ class CKManager {
     func savePublic (record: CKRecord){
         publicDB.save(record) { (record, error) in
             guard error == nil else {
-                print("Problema ao tentar salvar o registro")
+                print("Problema ao tentar salvar o registro: \(error!)")
                 return
             }
             
@@ -167,7 +167,7 @@ class CKManager {
         let selectedRecordID = CKRecordID(recordName: id)
         db.delete(withRecordID: selectedRecordID) { (recordID, error) in
             if error != nil {
-                print(error)
+                print(error ?? "Error")
             }else {
                 print("DELETOU")
             }
@@ -196,7 +196,7 @@ class CKManager {
                 return
             }
             
-            let teas = teaRecords.map({ (record) in
+            teaRecords.forEach({ (record) in
                 var identificador:String = ""
                 if String(describing: record.recordID) == t.id {
                     // Guarda o identificador
@@ -226,7 +226,7 @@ class CKManager {
                 return
             }
             
-            let teas = teaRecords.map({ (record) in
+            teaRecords.forEach({ (record) in
                 if String(describing: record.recordID) == t.id {
                     sit = true
                 }

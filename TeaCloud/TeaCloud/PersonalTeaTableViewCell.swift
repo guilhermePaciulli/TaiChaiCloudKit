@@ -15,39 +15,29 @@ class PersonalTeaTableViewCell: UITableViewCell {
     
     @IBOutlet weak var teaContentLabel: UILabel!
     
+    @IBOutlet weak var sharedTeaSwitch: UISwitch!
+    
     var tea: Tea?
-//    var tea: Tea? {
-//        get {
-//            return tea
-//        }
-//        set(newValue) {
-//            if let value = newValue {
-//                self.teaNameLabel.text = value.name
-//                self.teaContentLabel.text = value.contents
-//            }
-//        }
-//    }
     
     override func awakeFromNib() {
-        teaNameLabel.text = tea?.name
-        teaContentLabel.text = tea?.contents
+        super.awakeFromNib()
+        if let tea = self.tea {
+            teaNameLabel.text = tea.name
+            teaContentLabel.text = tea.contents
+            self.sharedTeaSwitch.isOn = CKManager.shared.existsOnPublic(t: tea)
+        }
     }
     
     @IBAction func didChangePrivacy(_ sender: UISwitch) {
         if(sender.isOn){
-            //fica ativo de verdade
-            print("oi1")
-            print(tea?.id)
             let record = CKRecord.init(recordType: "Tea", recordID: CKRecordID(recordName: (tea?.id)!))
             record[.name] = tea?.name
             record[.contents] = tea?.contents
             CKManager.shared.savePublic(record: record)
-           
-        }else{
-            //nao fica ativo
-            print("oi2")
+            
+        } else {
             if let id = tea?.id {
-                 CKManager.shared.deleteTea(id: id, privado: false)
+                CKManager.shared.deleteTea(id: id, privado: false)
             }
         }
     }

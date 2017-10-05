@@ -53,19 +53,6 @@ class PersonalTeasTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let teaDeleted = self.personalTeas[indexPath.row]
-            self.personalTeas.remove(at: indexPath.row)
-            //Just remove the tea here, the tea is inside the variable teaDeleted
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
-    
     @IBAction func newTea(_ sender: UIBarButtonItem) {
         self.showTeaViewController(toEdit: nil)
     }

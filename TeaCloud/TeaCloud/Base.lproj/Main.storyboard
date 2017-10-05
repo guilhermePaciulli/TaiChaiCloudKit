@@ -79,6 +79,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="sharedTeaSwitch" destination="M94-gC-1s2" id="c7y-v8-vaB"/>
                                     <outlet property="teaContentLabel" destination="D9P-W4-DTf" id="5rl-9R-kqC"/>
                                     <outlet property="teaNameLabel" destination="8Nb-wc-Yek" id="6Ih-Nw-eNd"/>
                                     <segue destination="SLh-p5-kax" kind="show" identifier="update" id="vcz-1w-0TZ"/>
