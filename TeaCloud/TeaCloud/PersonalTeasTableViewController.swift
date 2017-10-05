@@ -21,9 +21,11 @@ class PersonalTeasTableViewController: UITableViewController {
         CKManager.shared.fetchTea(privado: true, callback: ({ (teas, error) in
             if let successfull = teas {
                 self.personalTeas = successfull
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }))
-        self.tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

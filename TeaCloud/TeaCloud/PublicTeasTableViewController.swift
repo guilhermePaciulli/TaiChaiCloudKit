@@ -11,11 +11,6 @@ import UIKit
 class PublicTeasTableViewController: UITableViewController {
     
     var publicTeas: [Tea] = []
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.loadData()
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -26,10 +21,11 @@ class PublicTeasTableViewController: UITableViewController {
         CKManager.shared.fetchTea(privado: false, callback: ({(teas, error) in
             if let successfull = teas {
                 self.publicTeas = successfull
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }))
-        
-        self.tableView.reloadData()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
