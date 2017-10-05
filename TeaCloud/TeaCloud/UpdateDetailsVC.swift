@@ -35,7 +35,8 @@ class UpdateDetailsVC: UIViewController {
     
     
     @IBAction func edit(_ sender: Any) {
-        CKManager.shared.updateTea(t: tea, privado: true)
+        let newTea = Tea.init(name: self.teaName.text!, contents: self.teaContents.text!, id: self.tea.id)
+        CKManager.shared.updateTea(t: newTea, privado: true)
         self.navigationController?.popViewController(animated: true)
     }
     
